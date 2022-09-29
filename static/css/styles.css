@@ -1,0 +1,512 @@
+*, *:before, *:after {
+	 box-sizing: border-box;
+}
+html {
+	 font-size: 0.9rem;
+	 font-weight: 300;
+	 font-family: "Nunito Sans", sans-serif;
+}
+body {
+	 margin: 0;
+	 padding: 0;
+	 background-color: #b0e0e6;
+	 background-attachment: fixed;
+	 text-align: center;
+}
+
+footer {
+    color: white;
+    text-align: center;
+    margin-top: 1%;
+    font-size: 1.1rem;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: black;
+}
+
+/* MENU PAGE */
+
+.menu-content {
+    padding-top: 0.5rem;
+}
+
+.menu-container {
+    margin: 20px auto;
+    font-size: 3rem;
+    background-color: dodgerblue;
+    color: white;
+    width: 85%
+    line-height: 1;
+    text-align: center;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    border-radius: 25px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.menu-container p {
+    padding: 1rem 0;
+}
+
+.link {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.heading {
+    padding-top: 7rem;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-weight: 600;
+    font-size: 3rem;
+}
+
+.menu-heading {
+    padding: 4rem 0.5rem 0;
+}
+
+.section-desc {
+    padding: 7rem 0.5rem 0;
+    color: white;
+    font-size: 1.6rem;
+    text-shadow: 0.5px 0.5px black;
+}
+
+@media (max-width: 650px) {
+    .section-desc {
+        margin-top: 4rem;
+    }
+}
+
+/*MAIN, SELECT & SEARCH SECTIONS*/
+
+#select_cards {
+    margin-top: 60px;
+    margin-bottom: 80px;
+}
+
+.index_content {
+    margin: 4rem 0;
+}
+
+.add_edit_box {
+    margin-top: 60px;
+}
+
+.search-box {
+    margin-top: 30px;
+    padding-bottom: 0;
+}
+
+.card {
+    padding: 0;
+    border-radius: 25px;
+}
+
+.card h5 {
+    font-size: 1.1rem;
+}
+
+.footer-btn {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: block;
+    margin: 0 auto 10px;
+    text-align: center;
+}
+
+.song-date {
+    padding-bottom: 50px;
+}
+
+.song-footer {
+    padding-bottom: 20px;
+}
+
+.row {
+    padding-top: 50px;
+}
+
+.menu-row {
+    padding-top: 1rem;
+}
+
+.card {
+    padding-bottom: 40px;
+}
+
+.card-text {
+    padding-bottom: 20px;
+}
+
+.card-img-top {
+    overflow: hidden;
+    padding: 20px;
+}
+
+.button a {
+    display: relative;
+    position: block;
+    z-index: 2;
+}
+
+.movie_title {
+    padding: 30px 0.5rem 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.movie_rating {
+    padding: 1rem;
+    text-align: center;
+}
+
+span output {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.8rem;
+}
+
+.movie_review {
+    padding: 0;
+}
+
+.movie_review textarea {
+    width: 83%;
+}
+
+
+/* FLIP CARDS */
+
+.flip-card {
+    background-color: transparent;
+    width: 400px;
+    height: 600px;
+    border: 2px solid #b0e0e6;
+    perspective: 1000px;
+    margin: 4rem auto;
+}
+
+.song-card {
+    width: 540px;
+    height: 300px;
+    border: none;
+}
+
+.song-card-back {
+    border: none;
+    padding-top: 1.5rem;
+    padding-bottom: 1.2rem;
+}
+
+.song_title {
+    padding: 30px 0.5rem 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+@media (max-width: 550px) {
+    .flip-card {
+        width: 307px;
+        height: 461px;
+        margin: 3rem auto;
+    }
+
+    .song-card {
+        width: 307px;
+        height: 174px;
+    }
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    border: 2px solid #b0e0e6;
+    border-radius: 25px;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    text-align: center;
+    border: 2px solid #b0e0e6;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.flip-card-front img {
+    width: 400px;
+    height: 600px;
+}
+
+.song-card img {
+    width: 540px;
+    height: 405px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width: 550px) {
+    .flip-card-front img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 307px;
+        height: 461px;
+    }
+
+    .song-card img {
+        height: 230px;
+        width: 307px;
+    }
+}
+
+.song-card-inner {
+    border: none;
+}
+
+.flip-card-back {
+    background-color: dodgerblue;
+    color: white;
+    transform: rotateY(180deg);
+    padding: 1.4rem 2rem;
+}
+
+.song-card-back .title {
+    font-size: 1.25rem;
+}
+
+.song-card-back .song-year, .rating {
+    font-size: 1.1rem;
+    font-weight: normal;
+    padding-bottom: 0.2rem;
+}
+
+.song-card-back a {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+}
+
+@media (max-width: 550px) {
+    .song-card-back a {
+        padding: 0;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .flip-card-back {
+        padding-top: 0.9rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .flip-card-back .title {
+        font-size: 1rem;
+    }
+
+    .flip-card-back .release_date {
+        font-size: 0.9rem;
+    }
+
+    .flip-card-back .rating {
+        font-size: 0.9rem;
+    }
+
+    .flip-card-back .overview {
+        font-size: 0.7rem;
+        height: 180px;
+        margin-bottom: 0.05rem;
+    }
+
+    .flip-card-back .review {
+        font-size: 0.75rem;
+        margin-bottom: 0.25rem;
+    }
+}
+
+.song-card-btn {
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 550px) {
+
+    .song-card-back .title {
+        font-size: 0.75rem;
+        padding-bottom: 0.1rem;
+    }
+
+    .song-card-back .song-year {
+        font-size: 0.6rem;
+    }
+
+    .song-card-back .rating {
+        font-size: 0.6rem;
+    }
+
+    .song-card-back {
+        padding: 1rem 1rem 0.5rem;
+    }
+
+    .song-card-btn {
+        margin: 0.3rem auto;
+    }
+
+    .song-card-btn a {
+        font-size: 0.7rem;
+        padding: 0.2rem 0;
+    }
+
+    .movie-card-btn a {
+        font-size: 0.8rem;
+        padding: 0.4rem;
+    }
+}
+
+.rank_num {
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 12rem;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width: 550px) {
+    .rank_num.song-rank {
+        font-size: 8rem;
+    }
+}
+
+.card-header {
+    background-color: #f8f9fa;
+}
+
+.title {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.release_date {
+    font-size: 1.2rem;
+    font-weight: normal;
+    padding-bottom: 0.2rem;
+    margin: 0;
+}
+
+.rating {
+    color: #E4BB23;
+}
+
+p.overview {
+     font-size: 0.85rem;
+	 height: 220px;
+	 width: 100%;
+	 overflow: hidden;
+	 text-overflow: ellipsis;
+	 margin-bottom: 0.5rem;
+}
+
+.alert {
+    margin-bottom: 0;
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+/* NAV BAR */
+
+#nav {
+    background-color: #b0e0e6;
+    padding-bottom: 2rem;
+}
+
+.navbar-brand {
+    position: relative;
+    color: white;
+    font-weight: 600;
+    font-size: 1.4rem;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    padding: 0;
+}
+
+.navbar-brand:hover {
+    color: dodgerblue;
+    text-shadow: none;
+}
+
+.nav-link {
+    position: relative;
+    color: white;
+    font-weight: 600;
+    font-size: 1.4rem;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    padding: 0;
+}
+
+.nav-link:hover {
+    color: dodgerblue;
+    text-shadow: none;
+}
+
+@media (max-width: 1000px) {
+    .nav-link {
+        font-size: 1rem;
+        top: 50px;
+    }
+}
+
+.navbar-text {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 600;
+    z-index: -1;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+@media (max-width: 650px) {
+    .navbar-text {
+        padding-top: 90px;
+        width: 100%;
+        background-color: #b0e0e6;
+    }
+
+    .heading {
+        padding-top: 10rem;
+    }
+}

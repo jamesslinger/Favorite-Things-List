@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<nav id="nav" class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('menu') }}">My Top 10's</a>
+        <span class="navbar-text mx-auto">{{ nav_title }}</span>
+        <div class="right-side-nav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <div class="nav-item">
+                        <a class="nav-link" href="{{ url_for('movies') }}">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="heading">
+    <h2>UPDATE MOVIE RATING & REVIEW</h2>
+</div>
+<div class="container text-center add_edit_box">
+    <div class="row justify-content-md-center">
+        <div class="col-sm-6">
+              <form action="{{ url_for('update_movie') }}" method="POST">
+                  {{ form.csrf_token }}
+                  <input type="text" hidden="hidden" name="title" value="{{ title }}">
+                  <div class="card text-center bg-light">
+                      <div class="card-body">
+                          <p class="movie_title">{{ title }}</p>
+                          <div class="movie_rating">
+                              <span>{{ form.rating.label(style="font-size:1rem;font-weight:600;") }}<br>{{ form.rating(min=1, max=10, step=0.1, oninput="this.nextElementSibling.value = this.value", value=rating | default("1", true)) }}
+                                  <output>{{ rating | default("1", true) }}</output>
+                              </span>
+                          </div>
+                          <div class="movie_review">
+                              {{ form.review.label(style="font-size:1rem;font-weight:600;") }}<br>
+                              <textarea name="review" id="review">{{ review }}</textarea>
+                              <br><br>
+                          </div>
+                          {{ form.submit(class="btn btn-lg btn-outline-dark col-10 mx-auto") }}
+                      </div>
+                  </div>
+              </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

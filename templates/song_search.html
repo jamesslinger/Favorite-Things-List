@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<nav id="nav" class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('menu') }}">James's Favorites</a>
+        <span class="navbar-text mx-auto">{{ nav_title }}</span>
+        <div class="right-side-nav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <div class="nav-item">
+                        <a class="nav-link" href="{{ url_for('songs') }}">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="heading">
+    <h2>ADD A SONG</h2>
+</div>
+<div class="container text-center add_edit_box">
+    <div class="row justify-content-center">
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-8 col-sm-8 col-xs-10">
+            <form action="{{ url_for('song_search') }}" method="POST">
+                {{ form.csrf_token }}
+                <div class="card text-center bg-light">
+                    <div class="card-body search-box">
+                        {{ form.keyword.label(style="font-size:1.4rem;font-weight:600;") }}<br><br>
+                        {{ form.keyword(autofocus="true", style="width:100%;height:40px;") }}<br><br>
+                        {{ form.submit(class="btn btn-outline-dark col-12 mx-auto") }}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

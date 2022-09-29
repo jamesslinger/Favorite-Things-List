@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<nav id="nav" class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('menu') }}">James's Favorites</a>
+        <span class="navbar-text mx-auto">{{ nav_title }}</span>
+        <div class="right-side-nav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <div class="nav-item">
+                        <a class="nav-link" href="{{ url_for('movie_search') }}">Search Again</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="heading">
+    <h2>SELECT MOVIE</h2>
+</div>
+<div class="container" id="select_cards">
+    <div class="row gx-4 gy-4">
+        {% for title in titles %}
+            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-10">
+                <div class="card h-100 border-dark bg-light">
+                    <form action="{{ url_for('add_selected_movie') }}" method="POST">
+                        {{ form.csrf_token }}
+                        <input type="text" hidden="hidden" name="id" value="{{ title.id }}">
+                        <input type="text" hidden="hidden" name="title" value="{{ title.title }}">
+                        <img src="https://image.tmdb.org/t/p/original{{ title.poster_path }}" class="card-img-top" alt="thumbnail_img" onerror="this.onerror=null;this.src='../static/images/tmdb_ph.png'">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ title.title }}</h5>
+                            <p class="card-text">({{ title.release_date[:4] | default("", true) }})</p>
+                        </div>
+                        <div class="footer-btn">
+                            <p>{{ form.submit(class="btn btn-outline-dark d-grid col-10 mx-auto") }}</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

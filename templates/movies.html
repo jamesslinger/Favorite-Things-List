@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<nav id="nav" class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('menu') }}">James's Favorites</a>
+        <span class="navbar-text mx-auto">{{ nav_title }}</span>
+        <div class="right-side-nav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <div class="nav-item">
+                        <a class="nav-link" href="{{ url_for('movie_search') }}">Add Movie</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="section-desc">
+  <p>{{ sec_desc }}</p>
+</div>
+
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="fa-sharp fa-solid fa-circle-check"></i> {{ message }}
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"></button>
+    </div>
+{% endfor %}
+
+<div class="index_content">
+    {% for movie in all_movies %}
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <img src="{{ movie.img_url }}" alt="movie_thumb" onerror="this.onerror=null; this.src='../static/images/tmdb_ph.png'">
+                <div class="rank_num">{{ movie.rank }}</div>
+            </div>
+            <div class="flip-card-back">
+                <div class="title">{{ movie.title }}</div>
+                <div class="release_date">({{ movie.year }})</div>
+                <div class="rating">
+                    <label>{{ movie.rating }}</label>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <p class="review"><em>"{{ movie.review }}"</em></p>
+                <p class="overview"><u><strong>Synopsis</strong></u><br>{{ movie.description }}</p>
+                <div class="movie-card-btn d-grid gap-1 col-6 mx-auto">
+                    <a href="{{ movie.imdb_link }}" target="_blank" class="btn btn-outline-light" onmouseup="this.blur()">View on IMDb</a>
+                    <a href="{{ url_for('update_movie', id=movie.id, title=movie.title, rating=movie.rating, review=movie.review) }}" class="btn btn-outline-light">Update</a>
+                    <a href="{{ url_for('delete_movie', id=movie.id, title=movie.title) }}" class="btn btn-outline-light delete-button">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}

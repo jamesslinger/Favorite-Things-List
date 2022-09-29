@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<nav id="nav" class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('menu') }}">James's Favorites</a>
+        <span class="navbar-text mx-auto">{{ nav_title }}</span>
+        <div class="right-side-nav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <div class="nav-item">
+                        <a class="nav-link" href="{{ url_for('song_search') }}">Add Song</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="section-desc">
+  <p>{{ sec_desc }}</p>
+</div>
+
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="fa-sharp fa-solid fa-circle-check"></i> {{ message }}
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"></button>
+    </div>
+{% endfor %}
+
+<div class="index_content">
+    {% for song in all_songs %}
+    <div class="flip-card song-card">
+        <div class="flip-card-inner song-card-inner">
+            <div class="flip-card-front song-card">
+                <img src="{{ song.img_url }}" alt="song_thumb" onerror="this.onerror=null; this.src='../static/images/tmdb_ph.png'">
+                <div class="rank_num song-rank">{{ song.rank }}</div>
+            </div>
+            <div class="flip-card-back song-card-back">
+                <div class="title">{{ song.title }}</div>
+                <div class="song-year">({{ song.year }})</div>
+                <div class="rating">
+                    <label>{{ song.rating }}</label>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="song-card-btn d-grid gap-1 col-6 mx-auto">
+                    <a href="{{ song.song_url }}" target="_blank" class="btn btn-outline-light">Play on YouTube</a>
+                    <a href="{{ url_for('update_song', id=song.id, title=song.title, rating=song.rating) }}" class="btn btn-outline-light">Update</a>
+                    <a href="{{ url_for('delete_song', id=song.id, title=song.title) }}" class="btn btn-outline-light">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}
