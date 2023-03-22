@@ -16,7 +16,7 @@ YT_ENDPOINT = "https://www.googleapis.com/youtube/v3/search"
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("SQLALCHEMY_DATABASE_URI")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URI")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 Bootstrap(app)
 db = SQLAlchemy(app)
@@ -29,7 +29,7 @@ class Songs(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
     year = db.Column(db.Integer, nullable=False)
-    rating = db.Column(db.Float, server_default='Add your rating!')
+    rating = db.Column(db.Float, server_default='0')
     rank = db.Column(db.Integer)
     song_url = db.Column(db.Text, nullable=False)
     img_url = db.Column(db.Text, nullable=False)
@@ -42,12 +42,12 @@ class Songs(db.Model):
 ##################################### MOVIES DB #####################################
 class Movies(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(200), nullable=False)
+    title = db.Column(db.String, nullable=False)
     year = db.Column(db.Integer)
-    description = db.Column(db.String(200), nullable=False)
-    rating = db.Column(db.Float, server_default='Add your rating!')
+    description = db.Column(db.String, nullable=False)
+    rating = db.Column(db.Float, server_default='0')
     rank = db.Column(db.Integer)
-    review = db.Column(db.Text, server_default='Add your review!')
+    review = db.Column(db.Text, server_default='0')
     img_url = db.Column(db.Text, nullable=False)
     imdb_link = db.Column(db.Text, nullable=False)
     date_added = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -99,6 +99,9 @@ class EditRating(FlaskForm):
 
 
 ##################################### MAIN MENU #####################################
+with app.app_context():
+    db.create_all()
+
 @app.route("/")
 def menu():
     return render_template("menu.html", year=CURRENT_YEAR)
