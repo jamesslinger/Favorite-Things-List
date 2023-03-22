@@ -1,12 +1,10 @@
 from flask import Flask, render_template, redirect, url_for, request, flash
 from flask_bootstrap import Bootstrap
-from flask_sqlalchemy import SQLAlchemy, request
+from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, SelectField, DecimalRangeField, TextAreaField
-from wtforms.validators import DataRequired
+from wtforms import StringField, SubmitField, DecimalRangeField, TextAreaField
 import requests as rq
 from datetime import datetime
-import json
 import os
 
 
@@ -18,7 +16,7 @@ YT_ENDPOINT = "https://www.googleapis.com/youtube/v3/search"
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///james-top-ten.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("SQLALCHEMY_DATABASE_URI")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 Bootstrap(app)
 db = SQLAlchemy(app)
@@ -112,12 +110,12 @@ def songs():
     db.create_all()
     empty_check = db.session.query(Songs).first()
     if empty_check is None:
-        return render_template("songs.html", nav_title="Top 20 Songs", sec_desc="List empty! Please add a song.", year=CURRENT_YEAR)
+        return render_template("songs.html", nav_title="My Top Songs", sec_desc="List empty! Please add a song.", year=CURRENT_YEAR)
     all_songs = Songs.query.order_by(Songs.rating).all()
     for i in range(len(all_songs)):
         all_songs[i].rank = len(all_songs) - i
     db.session.commit()
-    return render_template("songs.html", all_songs=all_songs, nav_title="Top 20 Songs", sec_desc="My favorite tunes from the past 20 years.", year=CURRENT_YEAR)
+    return render_template("songs.html", all_songs=all_songs, nav_title="My Top Songs", sec_desc="My favourite tunes from the past 20 years.", year=CURRENT_YEAR)
 
 
 @app.route("/songs/search", methods=["GET", "POST"])
@@ -210,12 +208,12 @@ def movies():
     db.create_all()
     empty_check = db.session.query(Movies).first()
     if empty_check is None:
-        return render_template('movies.html', nav_title="Top 20 Movies" ,sec_desc="List empty! Please add a movie.", year=CURRENT_YEAR)
+        return render_template('movies.html', nav_title="My Top Movies" ,sec_desc="List empty! Please add a movie.", year=CURRENT_YEAR)
     all_movies = Movies.query.order_by(Movies.rating).all()
     for i in range(len(all_movies)):
         all_movies[i].rank = len(all_movies) - i
     db.session.commit()
-    return render_template("movies.html", all_movies=all_movies, nav_title="Top 20 Movies", sec_desc="These are my all time favourite movies.", year=CURRENT_YEAR)
+    return render_template("movies.html", all_movies=all_movies, nav_title="My Top Movies", sec_desc="These are my all time favourite movies.", year=CURRENT_YEAR)
 
 
 @app.route("/movies/movie-search", methods=["GET", "POST"])
