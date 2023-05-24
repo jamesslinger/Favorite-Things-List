@@ -5,19 +5,30 @@ html {
 	 font-size: 0.9rem;
 	 font-weight: 300;
 	 font-family: "Nunito Sans", sans-serif;
+
 }
+
 body {
 	 margin: 0;
 	 padding: 0;
 	 background-color: #b0e0e6;
 	 background-attachment: fixed;
 	 text-align: center;
+	 background: rgb(246, 241, 241);
+	 background: linear-gradient(
+        180deg,
+        rgba(246, 241, 241, 1) 0%,
+        rgba(175, 211, 226, 0.6) 20%,
+        rgba(25, 167, 206, 0.7) 60%,
+        rgba(20, 108, 148, 0.8) 90%
+        );
+     min-height: 100vh;
 }
 
 footer {
     color: white;
     text-align: center;
-    margin-top: 1%;
+    margin-top: 3rem;
     font-size: 1.1rem;
 }
 
@@ -39,9 +50,10 @@ footer a:hover {
 .menu-container {
     margin: 20px auto;
     font-size: 3rem;
-    background-color: dodgerblue;
+    background-color: rgba(30, 144, 255, 0.40);
     color: white;
-    width: 85%
+    width: 90%;
+    object-fit: cover;
     line-height: 1;
     text-align: center;
     font-family: Helvetica, Arial, sans-serif;
@@ -50,10 +62,22 @@ footer a:hover {
     position: relative;
     border-radius: 25px;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    min-height: 220px;
 }
 
 .menu-container p {
-    padding: 1rem 0;
+    line-height: 220px;
+    text-align: center;
+}
+
+.movies-btn {
+    background-image: url('/static/images/movies.jpg');
+    background-repeat: no-repeat, no-repeat;
+    background-position: right, left;
+}
+
+.songs-btn {
+    background-image: url('/static/images/music.jpg');
 }
 
 .link {
@@ -70,7 +94,7 @@ footer a:hover {
     color: white;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     font-weight: 600;
-    font-size: 3rem;
+    font-size: 3.5rem;
 }
 
 .menu-heading {
@@ -81,12 +105,16 @@ footer a:hover {
     padding: 7rem 0.5rem 0;
     color: white;
     font-size: 1.6rem;
-    text-shadow: 0.5px 0.5px black;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 @media (max-width: 650px) {
     .section-desc {
         margin-top: 4rem;
+    }
+
+    .menu-container p {
+        font-size: 2rem;
     }
 }
 
@@ -195,7 +223,7 @@ span output {
     background-color: transparent;
     width: 400px;
     height: 600px;
-    border: 2px solid #b0e0e6;
+    /*border: 2px solid #b0e0e6;*/
     perspective: 1000px;
     margin: 4rem auto;
 }
@@ -238,7 +266,7 @@ span output {
     text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
-    border: 2px solid #b0e0e6;
+    border: 2px solid #f5f5f5;
     border-radius: 25px;
 }
 
@@ -253,7 +281,7 @@ span output {
     -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden;
     text-align: center;
-    border: 2px solid #b0e0e6;
+    border: 2px solid #f5f5f5;
     border-radius: 25px;
     overflow: hidden;
 }
@@ -444,7 +472,6 @@ p.overview {
 /* NAV BAR */
 
 #nav {
-    background-color: #b0e0e6;
     padding-bottom: 2rem;
 }
 
@@ -458,7 +485,7 @@ p.overview {
 }
 
 .navbar-brand:hover {
-    color: dodgerblue;
+    color:  rgba(30, 144, 255, 0.5);
     text-shadow: none;
 }
 
@@ -475,7 +502,7 @@ p.overview {
 }
 
 .nav-link:hover {
-    color: dodgerblue;
+    color: rgba(30, 144, 255, 0.5);
     text-shadow: none;
 }
 
@@ -503,10 +530,14 @@ p.overview {
     .navbar-text {
         padding-top: 90px;
         width: 100%;
-        background-color: #b0e0e6;
     }
 
     .heading {
-        padding-top: 10rem;
+        padding-top: 8rem;
     }
+
+    .heading h4 {
+        padding: 1.5rem 0.5rem 0;
+    }
+
 }
