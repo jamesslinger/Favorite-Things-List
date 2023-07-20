@@ -216,6 +216,11 @@ span output {
     width: 83%;
 }
 
+input#rating {
+    width: 83%;
+    margin-top: 1rem;
+}
+
 
 /* FLIP CARDS */
 
