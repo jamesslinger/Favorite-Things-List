@@ -477,7 +477,10 @@ p.overview {
 /* NAV BAR */
 
 #nav {
-    padding-bottom: 2rem;
+    padding-bottom: 2.5rem;
+    transition: top 0.3s;
+    background-color: rgba(246, 241, 241, 0.75);
+    backdrop-filter: blur(5px);
 }
 
 .navbar-brand {
