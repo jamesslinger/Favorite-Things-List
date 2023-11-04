@@ -6,6 +6,10 @@ from wtforms import StringField, SubmitField, DecimalRangeField, TextAreaField
 import requests as rq
 from datetime import datetime
 import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 
 TMDB_API_KEY = os.environ.get("TMDB_API_KEY")
@@ -302,4 +306,4 @@ def delete_movie():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
