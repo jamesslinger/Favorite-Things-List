@@ -253,6 +253,9 @@ def add_selected_movie():
         response = rq.get(url=movie_url, params=tmdb_params)
         response.raise_for_status()
         movie_to_add = response.json()
+        print(f"Title: {movie_to_add['original_title']}")
+        print(f"Year: {movie_to_add['release_date'].split('-')[0]}")
+
         new_movie = Movies(title = movie_to_add['original_title'],
                           year = movie_to_add['release_date'].split('-')[0],
                           description = movie_to_add['overview'],

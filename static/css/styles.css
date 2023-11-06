@@ -30,6 +30,7 @@ footer {
     text-align: center;
     margin-top: 3rem;
     font-size: 1.1rem;
+    text-shadow: 1px 1px 2px black;
 }
 
 footer a {
@@ -52,7 +53,6 @@ footer a:hover {
     font-size: 3rem;
     background-color: rgba(30, 144, 255, 0.40);
     color: white;
-    width: 90%;
     object-fit: cover;
     line-height: 1;
     text-align: center;
@@ -74,10 +74,12 @@ footer a:hover {
     background-image: url('/static/images/movies.jpg');
     background-repeat: no-repeat, no-repeat;
     background-position: right, left;
+    background-size: cover;
 }
 
 .songs-btn {
     background-image: url('/static/images/music.jpg');
+    background-size: cover;
 }
 
 .link {
@@ -92,20 +94,20 @@ footer a:hover {
 .heading {
     padding-top: 7rem;
     color: white;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 1px 1px 2px black;
     font-weight: 600;
     font-size: 3.5rem;
 }
 
 .menu-heading {
-    padding: 4rem 0.5rem 0;
+    padding: 4rem 1rem 0;
 }
 
 .section-desc {
     padding: 7rem 0.5rem 0;
     color: white;
     font-size: 1.6rem;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 1px 1px 2px black;
 }
 
 @media (max-width: 650px) {
@@ -205,7 +207,8 @@ footer a:hover {
 span output {
     font-size: 2rem;
     display: block;
-    margin-bottom: 0.8rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .movie_review {
@@ -214,11 +217,19 @@ span output {
 
 .movie_review textarea {
     width: 83%;
+    height: 100px;
+    caret-color: black;
 }
 
 input#rating {
     width: 83%;
-    margin-top: 1rem;
+    margin-top: 1.8rem;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  transform: scale(2); /* makes thumb larger */
+  box-shadow: 0 0 0 2px var(--lemon-green); /* box shadow works like a border */
+  border-radius: 50%; /* makes box shadow/border a perfect circle ins shape */
 }
 
 
@@ -422,7 +433,7 @@ input#rating {
 }
 
 .rank_num {
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 1px 1px 2px black;
     font-size: 12rem;
     color: #fff;
     position: absolute;
@@ -471,14 +482,14 @@ p.overview {
     color: white;
     font-size: 1.4rem;
     font-weight: 500;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 1px 1px 2px black;
 }
 
 /* NAV BAR */
 
 #nav {
     padding-bottom: 2.5rem;
-    transition: top 0.3s;
+    transition: top 0.3s;*
     background-color: rgba(246, 241, 241, 0.75);
     backdrop-filter: blur(5px);
 }
@@ -488,7 +499,7 @@ p.overview {
     color: white;
     font-weight: 600;
     font-size: 1.4rem;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 1px 1px 2px black;
     padding: 0;
 }
 
@@ -502,11 +513,12 @@ p.overview {
     color: white;
     font-weight: 600;
     font-size: 1.4rem;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 1px 1px 2px black;
     position: absolute;
     top: 8px;
     right: 10px;
     padding: 0;
+    transition: none;
 }
 
 .nav-link:hover {
@@ -516,7 +528,6 @@ p.overview {
 
 @media (max-width: 1000px) {
     .nav-link {
-        font-size: 1rem;
         top: 50px;
     }
 }
@@ -531,12 +542,17 @@ p.overview {
     font-weight: 600;
     z-index: -1;
     color: white;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 1px 1px 2px black;
 }
 
 @media (max-width: 650px) {
+
+    #nav {
+        padding-bottom: 5.5rem;
+    }
+
     .navbar-text {
-        padding-top: 90px;
+        padding-top: 70px;
         width: 100%;
     }
 
@@ -545,7 +561,7 @@ p.overview {
     }
 
     .heading h4 {
-        padding: 1.5rem 0.5rem 0;
+        padding: 1.5rem 1.5rem 0;
     }
 
 }
