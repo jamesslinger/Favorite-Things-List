@@ -310,11 +310,12 @@ def delete_movie():
 
 @app.route('/movies')
 def restore_lists():
-    try:
-        result = subprocess.run(['pg_restore --dbname=ftdb --verbose d:var/www/favt/ftdb.tar'], stdout=subprocess.PIPE, check=True)
-        print(result.stdout.decode())
-    except subprocess.CalledProcessError as e:
-        print(f'Command {e.cmd} failed with error {e.returncode}')
+    os.system('pg_restore --dbname=ftdb --verbose /var/www/favt/ftdb.tar')
+    # try:
+    #     result = subprocess.run(['pg_restore --dbname=ftdb --verbose /var/www/favt/ftdb.tar'], stdout=subprocess.PIPE, check=True)
+    #     print(result.stdout.decode())
+    # except subprocess.CalledProcessError as e:
+    #     print(f'Command {e.cmd} failed with error {e.returncode}')
 
 
 if __name__ == '__main__':
