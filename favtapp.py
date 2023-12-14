@@ -6,6 +6,7 @@ from wtforms import StringField, SubmitField, DecimalRangeField, TextAreaField
 import requests as rq
 from datetime import datetime
 import os
+import subprocess
 from dotenv import load_dotenv
 
 
@@ -306,6 +307,14 @@ def delete_movie():
     db.session.commit()
     flash(f'"{request.args.get("title")}" deleted!')
     return redirect(url_for('movies'))
+
+@app.route('/movies')
+def restore_lists():
+    try:
+        result = subprocess.run(['pg_restore --dbname=ftdb --verbose d:var/www/favt/ftdb.tar'], stdout=subprocess.PIPE, check=True)
+        print(result.stdout.decode())
+    except subprocess.CalledProcessError as e:
+        print(f'Command {e.cmd} failed with error {e.returncode}')
 
 
 if __name__ == '__main__':
