@@ -12,14 +12,35 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <div class="nav-item">
-                        <a class="nav-link" href="{{ url_for('song_search') }}">Add Song</a>
+                    <div class="nav-link nav-item">
+                        <a type="button" class="pe-auto" class="nav-link" href="{{ url_for('song_search') }}">Add Song</a>
+                        <a type="button" class="pe-auto" data-bs-toggle="modal" data-bs-target="#restoreModal">Restore Lists</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </nav>
+
+<!-- Restore Lists Modal -->
+<div class="modal fade" id="restoreModal" tabindex="-1" aria-labelledby="restoreModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title mx-auto fs-5" id="restoreModalLabel">Restore Lists</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body mx-auto">
+          <p>Restore James's original Movies & Songs lists?</p>
+          <p>Warning: This will delete any changes you've made and restore the original lists. Are you sure?</p>
+      </div>
+      <div class="modal-footer mx-auto">
+        <button type="button" class="btn btn-outline-dark btn-lg" data-bs-dismiss="modal">Cancel</button>
+        <a href="{{ url_for('restore_lists', path='songs') }}" type="button" class="btn btn-outline-dark btn-lg">Restore</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="section-desc">
   <p>{{ sec_desc }}</p>

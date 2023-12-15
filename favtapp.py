@@ -308,15 +308,15 @@ def delete_movie():
     flash(f'"{request.args.get("title")}" deleted!')
     return redirect(url_for('movies'))
 
-@app.route('/movies/restore')
-def restore_lists():
+@app.route('/<path>/restore')
+def restore_lists(path):
     try:
         subprocess.run('/usr/lib/postgresql/13/bin/pg_restore --clean -U postgres -Ft -d ftdb < /var/www/favt/ftdb.tar', shell=True)
         flash('Restore complete.')
-        return redirect(url_for('movies'))
+        return redirect(url_for('menu'))
     except Exception as e:
         flash(f'Restore failed. Error: {e}')
-        return redirect(url_for('movies'))
+        return redirect(url_for('menu'))
 
 
 if __name__ == '__main__':
