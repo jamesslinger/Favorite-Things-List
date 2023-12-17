@@ -69,7 +69,7 @@
                 </div>
                 <p class="review"><em>"{{ movie.review }}"</em></p>
                 <p class="overview"><u><strong>Synopsis</strong></u><br>{{ movie.description }}</p>
-                <div class="movie-card-btn d-grid gap-1 col-6 mx-auto">
+                <div class="movie-card-btn d-grid gap-2 col-8 mx-auto">
                     <a href="{{ movie.imdb_link }}" target="_blank" class="btn btn-outline-light" onmouseup="this.blur()">View on IMDb</a>
                     <a href="{{ url_for('update_movie', id=movie.id, title=movie.title, rating=movie.rating, review=movie.review) }}" class="btn btn-outline-light">Update</a>
                     <a href="{{ url_for('delete_movie', id=movie.id, title=movie.title) }}" class="btn btn-outline-light delete-button">Delete</a>

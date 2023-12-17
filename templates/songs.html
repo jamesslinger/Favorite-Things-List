@@ -62,16 +62,18 @@
                 <div class="rank_num song-rank">{{ song.rank }}</div>
             </div>
             <div class="flip-card-back song-card-back">
-                <div class="title">{{ song.title }}</div>
-                <div class="song-year">({{ song.year }})</div>
-                <div class="rating">
-                    <label>{{ song.rating }}</label>
-                    <i class="fa-solid fa-star"></i>
-                </div>
-                <div class="song-card-btn d-grid gap-1 col-6 mx-auto">
-                    <a href="{{ song.song_url }}" target="_blank" class="btn btn-outline-light">Play on YouTube</a>
-                    <a href="{{ url_for('update_song', id=song.id, title=song.title, rating=song.rating) }}" class="btn btn-outline-light">Update</a>
-                    <a href="{{ url_for('delete_song', id=song.id, title=song.title) }}" class="btn btn-outline-light">Delete</a>
+                <div class="song-card-content">
+                    <div class="title">{{ song.title }}</div>
+                        <div class="song-year">({{ song.year }})</div>
+                        <div class="rating">
+                            <label>{{ song.rating }}</label>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    <div class="song-card-btn d-grid gap-3 col-10 mx-auto">
+                        <a href="{{ song.song_url }}" target="_blank" class="btn btn-outline-light btn-lg">Play on YouTube</a>
+                        <a href="{{ url_for('update_song', id=song.id, title=song.title, rating=song.rating) }}" class="btn btn-outline-light btn-lg">Update</a>
+                        <a href="{{ url_for('delete_song', id=song.id, title=song.title) }}" class="btn btn-outline-light btn-lg">Delete</a>
+                    </div>
                 </div>
             </div>
         </div>
