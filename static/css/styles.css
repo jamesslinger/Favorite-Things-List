@@ -237,8 +237,8 @@ input[type="range"]::-webkit-slider-thumb {
 
 .flip-card {
     background-color: transparent;
-    width: 400px;
-    height: 600px;
+    width: 420px;
+    height: 620px;
     /*border: 2px solid #b0e0e6;*/
     perspective: 1000px;
     margin: 4rem auto;
@@ -272,8 +272,8 @@ input[type="range"]::-webkit-slider-thumb {
 
 @media (max-width: 550px) {
     .flip-card {
-        width: 307px;
-        height: 461px;
+        width: 320px;
+        height: 480px;
         margin: 3rem auto;
     }
 
@@ -311,8 +311,9 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .flip-card-front img {
-    width: 400px;
-    height: 600px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
 }
 
 .flip-card-front.song-card {
@@ -326,8 +327,6 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .song-card img {
-    width: 540px;
-    height: 405px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -339,13 +338,11 @@ input[type="range"]::-webkit-slider-thumb {
         display: block;
         margin-left: auto;
         margin-right: auto;
-        width: 307px;
-        height: 461px;
     }
 
     .song-card img {
-        height: 230px;
-        width: 307px;
+        height: 80%;
+        width: 80%;
     }
 }
 
@@ -402,7 +399,7 @@ input[type="range"]::-webkit-slider-thumb {
 
     .flip-card-back .overview {
         font-size: 0.7rem;
-        height: 180px;
+        max-height: 170px;
         margin-bottom: 0.05rem;
     }
 
@@ -446,7 +443,7 @@ input[type="range"]::-webkit-slider-thumb {
 
     .movie-card-btn a {
         font-size: 0.8rem;
-        padding: 0.4rem;
+        padding: 0.6rem 0;
     }
 }
 
